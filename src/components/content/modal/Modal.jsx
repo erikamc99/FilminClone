@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './Modal.css'
 import ReactPlayer from 'react-player/youtube'
 
-
 function Modal(props) {
     const { onMouseLeave, isModalVisible } = props;
     function handleUnstarted() {
