@@ -6,8 +6,8 @@ const Links = () => {
   return (
     <nav className="navbar__links">
       <Link to="/">Inicio</Link>
-      <Link to="/construction" target="_blank">Cine</Link>
-      <Link to="/construction" target="_blank">Series</Link>
+      <Link to="/construction" className="green-links">Cine</Link>
+      <Link to="/construction" className="green-links">Series</Link>
       <DropdownMenu />
     </nav>
   );

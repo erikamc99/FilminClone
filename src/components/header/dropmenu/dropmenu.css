@@ -71,6 +71,8 @@
 }
 
 .arrow-icon {
+  padding: 10px;
   width: auto;
   height: 10px;
+  padding-left: 10px;
 }
