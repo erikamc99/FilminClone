@@ -3,7 +3,6 @@ import './Modal.css';
 import ReactPlayer from 'react-player/youtube';
 import { Link } from "react-router-dom";
 
-
 function Modal(props) {
     const { onMouseLeave, isModalVisible } = props;
     function handleUnstarted() {
