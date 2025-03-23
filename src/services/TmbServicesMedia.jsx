@@ -48,5 +48,5 @@ function interleaveArrays(array1, array2) {
     if (i < array2.length) interleaved.push(array2[i]);
   }
 
-  return interleaved;
+  return interleaved.slice(0, 10);
 }

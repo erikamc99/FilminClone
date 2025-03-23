@@ -17,6 +17,7 @@ async function getAllGenres() {
     throw error;
   }
 }
+
 async function searchByGenre(genreId, type) {
   try {
     const endpoint = type === 'movie' ? '/discover/movie' : '/discover/tv';
@@ -27,6 +28,7 @@ async function searchByGenre(genreId, type) {
     throw error;
   }
 }
+
 async function searchContent(query) {
   try {
     const data = await getData('/search/multi', { query });

@@ -1,23 +1,27 @@
-
-
 import axios from 'axios';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY; 
+const API_KEY = import.meta.env.VITE_API_KEY; 
+const token = `Bearer ${import.meta.env.VITE_TOKEN_API}`;
 
 
 const ApiClient = axios.create({
   baseURL: BASE_URL, 
   params: {
-    api_key: API_KEY,
     language: 'es-ES', 
   },
+  headers: {
+    accept: 'application/json',
+    Authorization: token,
+  }
 });
 
 
 async function getData(endpoint, params = {}){
   try {
-    const response = await ApiClient.get(endpoint, { params }); 
+    const response = await ApiClient.get(endpoint, { 
+      params: { ...params, api_key: API_KEY }
+    });  
     return response.data; 
   } catch (error) {
     console.error('Error getData:', error);
@@ -40,12 +44,15 @@ function getProductsByTrendy(productType = 'all', time='week'){
 function getImageUrl(path, size = "w500") {
   return path ? `https://image.tmdb.org/t/p/${size}${path}` : "url_de_imagen_predeterminada";
 } 
+
 function getFilterCarrusel(filterParams = {}, type = 'movie') {
   const defaultParams = {
     sort_by: 'popularity.desc', 
     page: 1,
   };
+
   const finalParams = { ...defaultParams, ...filterParams };
   return getData(`/discover/${type}`, finalParams);
 }
+
 export { getData, getProductById, getProductsByList, getProductsByTrendy, getImageUrl, getFilterCarrusel};

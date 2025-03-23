@@ -19,7 +19,15 @@ export async function getModalData(productType, productId){
             poster_path,
         };
         product.title=data.name||data.title;
-        product.videoKey= data.videos.results[0]?.key;
+        if (data.videos?.results?.length > 0) {
+            const officialVideo = data.videos.results.find(
+                (video) => video.type === "Trailer" && video.site === "YouTube"
+            ) || data.videos.results[0]; // Si no hay trailer, tomar el primero disponible
+        
+            product.videoKey = officialVideo?.key;
+        } else {
+            product.videoKey = null; // Evita errores si no hay videos
+        }
         let certification;
         if(data.content_ratings){
             const age = data.content_ratings.results.find(iso => iso.iso_3166_1 == "ES");
@@ -45,7 +53,7 @@ export async function getModalData(productType, productId){
         const seasons= data.number_of_seasons == 1 ? `${data.number_of_seasons} temporada`: `${data.number_of_seasons} temporadas`;
         product.time= data.runtime ? `${minutes()}` : `${seasons} · ${minutes()}/ep.`;
         
-        return product;
+        return product ;
 
     } catch (error) {
         console.error('Error getData:', error);
