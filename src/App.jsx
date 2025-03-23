@@ -3,7 +3,7 @@ import Footer from './components/footer/Footer';
 import React from "react";
 import Navbar from "./components/header/navbar/navbar";
 import Content from './components/content/Content';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import PaginaEnConstruccion from "./components/construction";
 import { ModalProvider } from "./context/ModalContext";  
 import Modal from "./components/content/modal/Modal"; 

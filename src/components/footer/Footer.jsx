@@ -1,5 +1,14 @@
 import React from 'react';
 import './Footer.css';
+import ghEri from '../../assets/img/EricaM.jpeg';
+import ghGrigory from '../../assets/img/GrigoryV.jpeg';
+import ghJuan from '../../assets/img/JuanC.jpeg';
+import ghLanny from '../../assets/img/LannyR.png';
+import ghLaura from '../../assets/img/LauraGM.jpg';
+import ghMarta from '../../assets/img/MartaB.jpeg';
+import logoEuropa from '../../assets/img/CoEU.png';
+import logoGobEsp from '../../assets/img/GobDeEsp.png';
+import logoGenCat from '../../assets/img/GenCatDdC.png';
 
 function Footer() {
   return (
@@ -21,22 +30,22 @@ function Footer() {
 
           <div className="teamImgContainer">
             <a className="teamImg" href="https://github.com/erikamc99" target="_blank" rel="noreferrer">
-              <img src="/assets/img/EricaM.jpeg" alt="Erica Montesinos-GitHub" title="Erica Montesinos-GitHub" />
+              <img src={ghEri} alt="Erica Montesinos-GitHub" title="Erica Montesinos-GitHub" />
             </a>
             <a className="teamImg" href="https://github.com/Grigory-Vladimiro" target="_blank" rel="noreferrer">
-              <img src="/assets/img/GrigoryV.jpeg" alt="Grigory Vladimiro-GitHub" title="Grigory Vladimiro-GitHub" />
+              <img src={ghGrigory} alt="Grigory Vladimiro-GitHub" title="Grigory Vladimiro-GitHub" />
             </a>
             <a className="teamImg" href="https://github.com/juancastro000" target="_blank" rel="noreferrer">
-              <img src="/assets/img/JuanC.jpeg" alt="Juan Esteban Castro-GitHub" title="Juan Esteban Castro-GitHub" />
+              <img src={ghJuan} alt="Juan Esteban Castro-GitHub" title="Juan Esteban Castro-GitHub" />
             </a>
             <a className="teamImg" href="https://github.com/LannyRivero" target="_blank" rel="noreferrer">
-              <img src="/assets/img/LannyR.png" alt="Lanny Rivero-GitHub" title="Lanny Rivero-GitHub" />
+              <img src={ghLanny} alt="Lanny Rivero-GitHub" title="Lanny Rivero-GitHub" />
             </a>
             <a className="teamImg" href="https://github.com/laura-gm-456" target="_blank" rel="noreferrer">
-              <img src="/assets/img/LauraGM.jpg" alt="Laura Garcia Muro-GitHub" title="Laura Garcia Muro-GitHub" />
+              <img src={ghLaura} alt="Laura Garcia Muro-GitHub" title="Laura Garcia Muro-GitHub" />
             </a>
             <a className="teamImg" href="https://github.com/MartaBernardoZamora" target="_blank" rel="noreferrer">
-              <img src="/assets/img/MartaB.jpeg" alt="Marta Bernardo Zamora-GitHub" title="Marta Bernardo Zamora-GitHub" />
+              <img src={ghMarta} alt="Marta Bernardo Zamora-GitHub" title="Marta Bernardo Zamora-GitHub" />
             </a>
           </div>
         </div>
@@ -45,13 +54,13 @@ function Footer() {
         <div className="bottomSection">
           <div className="bottom">
             <a href="https://culture.ec.europa.eu/" target="_blank" rel="noreferrer">
-              <img className="downLogos" src="/assets/img/CoEU.png" alt="Europa Creativa" />
+              <img className="downLogos" src={logoEuropa} alt="Europa Creativa" />
             </a>
             <a href="https://www.cultura.gob.es/portada.html" target="_blank" rel="noreferrer">
-              <img className="downLogos" src="/assets/img/GobDeEsp.png" alt="Gobierno de España" />
+              <img className="downLogos" src={logoGobEsp} alt="Gobierno de España" />
             </a>
             <a href="https://cultura.gencat.cat/ca/inici/" target="_blank" rel="noreferrer">
-              <img className="downLogos" src="/assets/img/GenCatDdC.png" alt="Generalitat de Catalunya" />
+              <img className="downLogos" src={logoGenCat} alt="Generalitat de Catalunya" />
             </a>
           </div>
 
