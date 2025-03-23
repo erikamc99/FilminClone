@@ -5,17 +5,13 @@
     border-radius: 0.5rem;
     overflow: auto;
     position:absolute; 
-    z-index: 9999; 
-    top:-20%;
-    left:-20%;
-
-
+    z-index: 999;
 }
 .divVideo, .divImage{
     height: 230px;
     overflow: hidden;
     position: relative;
-    z-index: 10000; 
+    z-index: 10000  !important; 
 }
 .divVideo > div > div{
     height: 200% !important;

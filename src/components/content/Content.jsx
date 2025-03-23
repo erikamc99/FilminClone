@@ -1,21 +1,18 @@
-
-import Slider from './slider/Slider'
-import Carousel from './pruebaLista/Carousel'
-import {
-  getFamilyFriendly,
-  getAnimated,
-  getRomantic,
-} from '../../services/TmbServicesCarousel'
+import { Suspense, use } from 'react';
+import Slider from './slider/Slider';
+import Carousel from './pruebaLista/Carousel';
 
 function Content() {
   return (
     <>
-    <Slider />
-      <Carousel title="Maravillas para Ver con los Peques" fetchFunction={getFamilyFriendly} />
-      <Carousel title="Cine de Animación" fetchFunction={getAnimated} />
-      <Carousel title="Historias de Amor" fetchFunction={getRomantic} />
+      <Slider />
+      <Suspense fallback={<p>Cargando...</p>}>
+        <Carousel title="Maravillas para Ver con los Peques" category="family" />
+        <Carousel title="Cine de Animación" category="animated" />
+        <Carousel title="Historias de Amor" category="romantic" />
+      </Suspense>
     </>
-  )
+  );
 }
 
-export default Content
+export default Content;

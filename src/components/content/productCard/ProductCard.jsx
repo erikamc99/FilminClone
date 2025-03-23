@@ -1,50 +1,46 @@
+import React, { useEffect, useState, useRef } from "react";
+import PropTypes from "prop-types";
+import { getModalData } from "../../../services/TmbServicesModal";
+import { useModal } from "../../../context/ModalContext";
+import "./ProductCard.css";
 
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types'
-import { getModalData } from '../../../services/TmbServicesModal';
-import Modal from '../modal/Modal';
-import './ProductCard.css'
-
-
-function ProductCard(props) {
-    const [product, setProduct] = useState();
-    const [isModalVisible, setIsModalVisible] = useState(false);
+function ProductCard({ id, type }) {
+    const [product, setProduct] = useState(null);
+    const { showModal } = useModal();
+    const cardRef = useRef(null);
+  
     useEffect(() => {
-        async function fetchProduct() {
-            try {
-                const data = await getModalData(props.type, props.id);
-                return setProduct(data);
-            } catch (error) {
-                console.error('Error getProductById:', error);
-                throw error;
-            }
+      async function fetchProduct() {
+        try {
+          const data = await getModalData(type, id);
+          setProduct(data);
+        } catch (error) {
+          console.error("Error getProductById:", error);
         }
-        fetchProduct();
-    }, []);    
-    function toggleModal() {
-        setIsModalVisible(!isModalVisible);
+      }
+      fetchProduct();
+    }, [id, type]);
+  
+    const handleMouseEnter = () => {
+      if (!product || !cardRef.current) return;
+  
+      const rect = cardRef.current.getBoundingClientRect();
+      showModal(product, rect);
     };
-
-    if (!product) return;
+  
+    if (!product) return null;
+  
     return (
-        <>
-            <div className="verticalCard"
-                onMouseEnter={toggleModal}
-                style={{ zIndex: 0 }}
-            >
-                <img src={`https://image.tmdb.org/t/p/original${product.poster_path}`} alt="" />
-                {props.type == "tv" && (<p className="isSerie">SERIE</p>)}
-                {(isModalVisible) && (
-                    <Modal 
-                        {...product} 
-                        isModalVisible={isModalVisible}
-                        onMouseLeave={toggleModal} />
-                )}
-            </div>
-        </>
-
-    )
-}
-
-
-export default ProductCard
+      <div ref={cardRef} className="verticalCard" onMouseEnter={handleMouseEnter}>
+        <img src={`https://image.tmdb.org/t/p/original${product.poster_path}`} alt="" />
+        {type === "tv" && <p className="isSerie">SERIE</p>}
+      </div>
+    );
+  }
+  
+  ProductCard.propTypes = {
+    id: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+  };
+  
+  export default ProductCard;
